@@ -7,6 +7,7 @@ use App\Student;
 //use Illuminate\Http\Request;
 use Carbon\Carbon;
 //use Request;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +42,10 @@ class studentController extends Controller
         //
         //dd('create');
 
+
+        //if(Auth::guest()){
+        //    return redirect('student');
+      //  }
         return view('student.create');
     }
 
@@ -56,7 +61,12 @@ class studentController extends Controller
 
         //$input['publichedAt']=Carbon::now();
 
-       $student=Student::create($request->all());
+       //$student=Student::create($request->all());
+
+        dd($request->all());
+
+       $student=new Student($request->all());
+        Auth::user()->student()->save($student);
         Session::flash('flash message','Task Successfully added');
        // return redirect()->back();
         return redirect('student');

@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA","file":"all.js","sourcesContent":["// A $( document ).ready() block.\r\n$( document ).ready(function() {\r\n    console.log( \"ready finally santoshvijaypawar has been arrived!\" );\r\n});"],"sourceRoot":"/source/"}

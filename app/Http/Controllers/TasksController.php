@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Http\Requests;
@@ -18,6 +18,9 @@ class TasksController extends Controller
     public function index()
     {
         //
+
+        $user = Auth::user();
+      //  echo $user->name;
         $tasks = Task::all();
 
         return view('tasks.index')->withTasks($tasks);
@@ -42,6 +45,11 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->user()) {
+            echo 'santosh';
+            
+            // $request->user() returns an instance of the authenticated user...
+        }
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required'

@@ -6,7 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tasks</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-</head>
+
+    <link rel="stylesheet" href="{{url(elixir('css/all.css'))}}">
+        <script type="text/javascript">
+            var basUrl="{{url('/')}}";
+        </script>
+    </head>
 <body>
 
 <nav class="navbar navbar-default">
@@ -26,6 +31,7 @@
         @yield('content')
     </div>
 </main>
-
+ <script type="text/javascript" src="{{asset('js/vendor/vendor.js')}}"></script>
+    <script type="text/javascript" src="{{url(elixir('js/all.js'))}}"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@ class Student extends Model
         'phoneno',
         'body',
         'publichedAt',
+        'user_id'
 
 
 
@@ -50,4 +51,15 @@ class Student extends Model
 
     }
 
+
+    /**
+     * a  article/student is owned by user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function user(){
+        return $this->belongsTo('App\user');
+    }
 }
+//$student->user
+//$student->owner
+//$student->writer

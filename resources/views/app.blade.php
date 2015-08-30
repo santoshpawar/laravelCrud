@@ -6,9 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tasks</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.css">
+
 </head>
 <body>
 
+
+<div class="container">
+@yield('content');
+</div>
+
+<!--
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -23,9 +31,9 @@
 
 <main>
     <div class="container">
-        @yield('content')
+        yield('content')
     </div>
 </main>
-
+-->
 </body>
 </html>

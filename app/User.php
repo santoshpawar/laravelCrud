@@ -8,6 +8,10 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/**
+ * Class User
+ * @package App
+ */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
@@ -32,4 +36,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    /**
+     * a user can have many article/student
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function students(){
+        return $this->hasMany('App\Student');
+    }
+    public function blog(){
+        return $this->hasMany('App\Blog');
+    }
+
 }

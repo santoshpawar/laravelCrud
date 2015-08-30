@@ -1,5 +1,8 @@
 <?php
-
+Route::get('gallery/list','GalleryController@viewGalleryList');
+Route::post('gallery/save','GalleryController@saveGallery');
+Route::get('gallery/view/{id}','GalleryController@viewGalleryPics');
+Route::post('image/do-upload','GalleryController@doImageUpload');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,6 +18,40 @@
 //Route::get('student/create','StudentController@create');
 //Route::get('student/{id}','StudentController@show');
 //Route::post('student','StudentController@store');
+/*
+ * Blog CRUD
+ */
+Route::resource('blog','blogController');
+//Route::get('blog/create',['middleware'=>'auth','uses'=>'blogController@create']);
+//Route::get('blog',['middleware'=>'auth','uses'=>'blogController@index']);
+//Route::get('bog','blogController')
+//Route::get('blog','blogController@index');
+//Route::get('blog/create','blogController@create');
+/*Route::resource('blog/create',[
+    'middleware'=>'auth',
+    'uses'=>'blogController'
+]);*/
+
+/*
+ * Register and login authentication
+*/
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/test', 'Auth\AuthController@postTest');
+
+/*
+ * Students and task
+*/
+
+
+
+
+
 
 
 Route::resource('student','studentController');
@@ -25,11 +62,7 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'PagesController@home'
 ]);
-Route::controllers([
-   'auth'=>'Auth\authController',
-    'password'=>'Auth\PasswordController'
 
-]);
 //Route::resource("student", "studentController");
 
 

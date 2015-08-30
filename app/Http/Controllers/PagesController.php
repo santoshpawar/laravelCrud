@@ -47,6 +47,7 @@ class PagesController extends Controller
      */
     public function home()
     {
+        //return \Auth::user();
         return view('pages.home');
     }
     public function show($id)

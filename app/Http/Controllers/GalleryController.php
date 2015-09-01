@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Gallery;
+use App\Image;
 
 class GalleryController extends Controller
 {
@@ -15,6 +16,9 @@ class GalleryController extends Controller
      *
      * @return Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function viewGalleryList()
     {
         $gallery=Gallery::latest()->get();
@@ -43,10 +47,10 @@ class GalleryController extends Controller
             'name'=>'required|min:3'
 
         ]);
+        //Auth::user();
 
-
-        $request['created_by']=1;
-        $request['published']=1;
+        $request['created_by']= Auth::user()->id;
+        $request['published']= Auth::user()->id;
         $galleryData=Gallery::create($request->all());
 
 
@@ -95,8 +99,28 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function doImageUpload(Request $request)
     {
-        //
+        //get the file from post request
+          $file=$request->file('file');
+
+        //set my filename
+          $filename=uniqid().$file->getClientOriginalName();
+
+        //move file to corect location
+           $file->move('gallery/images/',$filename);
+            //save in db
+        $gallery=Gallery::find($request->input('gallery_id'));
+
+        $image=$gallery->images()->create([
+            'gallery_id'=>$request->input('gallery_id'),
+            'file_name'=>$filename,
+            'file_size'=>$file->getClientSize(),
+            'file_mime'=>$file->getClientMimeType(),
+            'file_path'=>'Gallery/images/'.$filename,
+            'created_by'=>Auth::user()->id,
+
+        ]);
+        return $image;
     }
 }

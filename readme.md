@@ -1,10 +1,10 @@
-## Laravel PHP Framework
+## Image Gallery Laravel PHP Framework
 
 ToDo application
 
 Santosh PAwar
 
-Image Gallery upoad with dropzone
+Image Gallery upload with dropzone
 User Midleware
 
 

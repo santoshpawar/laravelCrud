@@ -50,7 +50,7 @@
                     </ul>
                 </div>
             @endif
-                <form class="form" method="post" action="{{url('gallery/save')}} name="addImages">
+                <form class="form" method="post" action="{{url('gallery/save')}}" name="addImages">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">

@@ -21,12 +21,16 @@
     <div class="nav navbar-nav navbar-right">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
+        <li><a href="{{url('gallery/list')}}">Gallery</a></li>
+
+
+
         <!-- view/layouts/base.blade.php -->
         @if(Auth::guest())
 
         @else
 
-           <li class="pull-right">{{ Auth::user()->name }}<a href="{{ route('logout') }}">logout</a></li>
+           <li class="pull-right"> <a href="{{ route('logout') }}">logout</a></li>
         @endif
 
     </div>

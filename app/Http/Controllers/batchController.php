@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Batch;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+//use Request;
+use Auth;
+use App\Blog;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Request;
 use Illuminate\Support\Facades\DB;
 
-class batchController extends Controller
+class blogController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
+    public function __construct(){
+        $this->middleware('auth',['only'=>'index']);
+
+    }
+
     public function index()
     {
-
-      $batch=Batch::all();
-      return view('batch.home',compact('batch'));
         //
+         Auth::User();
+        $show=Blog::latest('publishedAt')->published()->get();
+        return view('blog.index',compact('show'));
     }
 
     /**
@@ -31,8 +38,11 @@ class batchController extends Controller
      */
     public function create()
     {
-        return view('batch.create');
         //
+        //return 'hii';
+
+        return view('blog.create');
+
     }
 
     /**
@@ -40,14 +50,29 @@ class batchController extends Controller
      *
      * @return Response
      */
-    public function store()
+    //Request $request
+    public function store(Request $request)
     {
-        $input=Request::all();
-      Batch::create($input);
-        DB::connection()->enableQueryLog();
-        \DB::enableQueryLog();
-        dd($input);
         //
+        //['publishedAt']=Carbon::now();
+
+        $this->validate($request,[
+            'name'=>'required',
+            'blogNo'=>'required',
+
+    ]);
+//       Auth::User()->blog;   //return the coolcetion
+        $blog=new Blog($request->all());
+        Auth::User()->blog()->save($blog);
+
+        //dd($text);
+        //$all=$request->all();
+        //$ww=Blog::create($request->all());
+
+        return redirect('blog');
+      dd($ww);
+        //$all=$request->all();
+
     }
 
     /**
@@ -58,9 +83,6 @@ class batchController extends Controller
      */
     public function show($id)
     {
-       $batch=Batch::findOrfail($id);
-        //dd($batch);//
-       return view('batch.show',compact('batch'));
         //
     }
 
@@ -73,6 +95,10 @@ class batchController extends Controller
     public function edit($id)
     {
         //
+
+        $edit=Blog::findOrfail($id);
+        return view('blog.edit',compact('edit'));
+
     }
 
     /**
@@ -81,9 +107,19 @@ class batchController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
         //
+
+        $this->validate($request,[
+           "name"=>"required",
+           "blogNo"=>"required",
+
+        ]);
+        $data=Blog::findOrfail($id);
+        $data->update($request->all());
+        dd($data);
+        return 'hi';
     }
 
     /**

@@ -49,25 +49,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js"></script>
     <script type="text/javascript" src="{{asset('js/vendor/vendor.js')}}"></script>
     <script type="text/javascript" src="{{url(elixir('js/all.js'))}}"></script>
-
-    <!--
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Tasks</a>
-        </div>
-        <div class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tasks</a></li>
-        </div>
-      </div>
-    </nav>
-
-    <main>
-        <div class="container">
-            yield('content')
-        </div>
-    </main>
-    -->
+ 
     </body>
     </html>

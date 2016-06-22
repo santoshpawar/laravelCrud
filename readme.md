@@ -1,4 +1,4 @@
-## Image Gallery Laravel PHP Framework
+##Vamaship  Programmer Test
 Frame 1
 This frame will contain a login screen, where a user will be able to register / login.
 

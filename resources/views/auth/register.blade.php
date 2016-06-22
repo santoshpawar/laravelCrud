@@ -5,7 +5,9 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
+			<div class="pull-right"><a class="btn btn-link" href="{{ url('/auth/login') }}">Login</a></div>
 				<div class="panel-heading">Register</div>
+
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -56,6 +58,8 @@
 								</button>
 							</div>
 						</div>
+
+
 					</form>
 				</div>
 			</div>

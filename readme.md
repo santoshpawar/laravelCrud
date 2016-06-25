@@ -15,10 +15,16 @@ after registration you can login
 Step 3:-
 Display Task Application 
 1)View Task screen and addd new task
+
 2)Add new task
+
 3)click on task on top display all tasks
-4)view task give option a)view task b)edit task
+
+4)view task give option 
+ a)view task b)edit task
+
 5)view task gives option to delete this task
+
 6)edit task 
 
 Addition Gallery Simple Application
